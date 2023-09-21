@@ -2,6 +2,7 @@ import UIKit
 
 class MovieQuizViewController: UIViewController {
 
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet private var imageView: UIImageView!
     @IBOutlet private var textLabel: UILabel!
     @IBOutlet private var counterLabel: UILabel!
