@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct NetworkClient {
     
     private enum NetworkError: Error {

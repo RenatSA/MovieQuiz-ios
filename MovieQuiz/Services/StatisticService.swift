@@ -3,7 +3,7 @@
 //  MovieQuiz
 //
 //  Created by Ренат Саляхов on 13.09.2023.
-//
+
 import Foundation
 
 protocol StatisticService {
