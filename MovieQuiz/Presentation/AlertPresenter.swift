@@ -4,28 +4,34 @@
 //
 //  Created by Ренат Саляхов on 16.09.2023.
 //
-
 import Foundation
 import UIKit
 
-protocol AlertPresenter {
-    func show(alertModel: AlertModel )
+protocol AlertPresenterProtocol: AnyObject {
+    func showAlert(_ model: AlertModel)
 }
-final class AlertPresenterImpl {
-   private weak var viewController: UIViewController?
+
+class AlertPresenter: AlertPresenterProtocol {
     
-    init(viewController: UIViewController? = nil) {
-        self.viewController = viewController
+    private weak var viewController: UIViewController?
+    
+    init(delegate: UIViewController?) {
+        self.viewController = delegate
     }
-}
-extension AlertPresenterImpl: AlertPresenter {
-    func show(alertModel: AlertModel) {
-        let alert = UIAlertController(title: alertModel.title,
-                                      message: alertModel.message,
-                                      preferredStyle: .alert)
-        let action = UIAlertAction(title: alertModel.buttonText, style: .default) { _ in
-            alertModel.buttonAction()
-        }
+    
+    func showAlert(_ model: AlertModel) {
+        let alert = UIAlertController(
+            title: model.title,
+            message: model.message,
+            preferredStyle: .alert
+        )
+        
+        let action = UIAlertAction(
+            title: model.buttonText,
+            style: .default) { _ in
+                model.completion()
+            }
+        
         alert.addAction(action)
         viewController?.present(alert, animated: true)
     }
