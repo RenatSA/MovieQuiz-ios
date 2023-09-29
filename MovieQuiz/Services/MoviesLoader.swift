@@ -12,13 +12,12 @@ protocol MoviesLoading {
 }
 
 struct MoviesLoader: MoviesLoading {
-    
-    // MARK: - API KEY
-    private let apiKey = "k_956619zh"
-    
     // MARK: - NetworkClient
+    private let networkClient: NetworkRouting
     
-    private let networkClient = NetworkClient()
+    init(networkClient: NetworkRouting = NetworkClient()) {
+        self.networkClient = networkClient
+    }
     
     // MARK: - URL
     private var mostPopularMoviesUrl: URL {
@@ -35,14 +34,12 @@ struct MoviesLoader: MoviesLoading {
                 do {
                     let mostPopularMovies = try JSONDecoder().decode(MostPopularMovies.self, from: data)
                     handler(.success(mostPopularMovies))
-                }
-                catch {
+                } catch {
                     handler(.failure(error))
                 }
             case .failure(let error):
                 handler(.failure(error))
             }
-            
         }
     }
 }
