@@ -130,6 +130,8 @@
                         <outlet property="noButton" destination="cic-7N-8B7" id="OTP-E8-MxE"/>
                         <outlet property="textLabel" destination="2CY-zI-nfm" id="6MP-C3-vFI"/>
                         <outlet property="yesButton" destination="qfW-ww-DMJ" id="GvT-YX-h3e"/>
+                        <outletCollection property="buttons" destination="qfW-ww-DMJ" collectionClass="NSMutableArray" id="ZzT-PZ-GBL"/>
+                        <outletCollection property="buttons" destination="cic-7N-8B7" collectionClass="NSMutableArray" id="Wjj-fm-j9I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

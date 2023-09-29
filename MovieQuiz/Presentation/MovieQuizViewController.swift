@@ -101,6 +101,7 @@ final class MovieQuizViewController: UIViewController, MovieQuizViewControllerPr
     }
     
     // MARK: - Private functions
+    
     private func enableButtons(enable: Bool) {
         for button in 0...1 {
             buttons[button].isEnabled = enable
@@ -114,7 +115,6 @@ final class MovieQuizViewController: UIViewController, MovieQuizViewControllerPr
         presenter.yesButtonClicked()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
-            self?.presenter.yesButtonClicked()
             self?.enableButtons(enable: true)
         }
     }
@@ -122,10 +122,9 @@ final class MovieQuizViewController: UIViewController, MovieQuizViewControllerPr
         enableButtons(enable: false)
         presenter.noButtonClicked()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
-            self?.presenter.noButtonClicked()
+            
             self?.enableButtons(enable: true)
         }
         
     }
 }
-
